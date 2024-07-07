@@ -507,7 +507,20 @@
                     "yacd.haishan.me",
                     "d.metacubex.one"
                 ],
+                "domain_suffix": [
+                    "mypikpak.net",
+                    "dl.google.com"
+                ],
+                "domain_keyword": [
+                    "aki-game"
+                ],
                 "outbound": "Direct"
+            },
+            {
+                "domain_suffix": [
+                    "apm.yun.hihonor.com"
+                ],
+                "outbound": "block"
             },
             {
                 "rule_set": "geosite-openai",
