@@ -629,6 +629,14 @@
                 "outbound": "Connect"
             },
             {
+                "domain_suffix": [
+                    "googleapis.cn",
+                    "googleapis.com",
+                    "xn--ngstr-lra8j.com"
+                ],
+                "outbound": "Google"
+            },
+            {
                 "rule_set": [
                     "geosite-cn",
                     "geoip-cn"
