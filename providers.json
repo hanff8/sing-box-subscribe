@@ -1,31 +1,37 @@
 {
-    "subscribes":[
-        {
-            "url": "URL",
-            "tag": "tag_1",
-            "enabled": true,
-            "emoji": 1,
-            "subgroup": "",
-            "prefix": "",
-            "User-Agent":"v2rayng"
-        },
-        {
-            "url": "URL",
-            "tag": "tag_2",
-            "enabled": false,
-            "emoji": 0,
-            "subgroup": "命名/named",
-            "prefix": "❤️",
-            "User-Agent":"clashmeta"
-        }
-    ],
-    "auto_set_outbounds_dns":{
-        "proxy": "",
-        "direct": ""
+  "subscribes": [
+    {
+      "url": "https://web.coo.wiki/api/v1/client/subscribe?token=0df58ae899952a2d17a887f606f52e2d",
+      "tag": "Coo",
+      "enabled": false,
+      "emoji": 1,
+      "subgroup": "",
+      "prefix": "Coo"
     },
-    "save_config_path": "./config.json",
-    "auto_backup": false,
-    "exclude_protocol":"ssr",
-    "config_template": "",
-    "Only-nodes": false
+    {
+      "url": "https://d41d8cd98f-1ytapi01.1ytsub.com/api/v1/client/subscribe?token=13ce9d9b12ae17e9ec0e9b944bef331b",
+      "tag": "1yunti",
+      "enabled": false,
+      "emoji": 1,
+      "subgroup": "",
+      "prefix": "1yunti"
+    },
+    {
+      "url": "https://pqjc.site/api/v1/client/subscribe?token=84b20e0339bcf2a442cbb6bbb6300a0c",
+      "tag": "peiqian",
+      "enabled": true,
+      "emoji": 1,
+      "subgroup": "",
+      "prefix": "peiqian"
+    }
+  ],
+  "auto_set_outbounds_dns": {
+    "proxy": "",
+    "direct": ""
+  },
+  "save_config_path": "config.json",
+  "auto_backup": false,
+  "exclude_protocol": "",
+  "config_template": "",
+  "Only-nodes": false
 }

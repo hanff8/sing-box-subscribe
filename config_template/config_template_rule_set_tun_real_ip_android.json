@@ -193,6 +193,14 @@
             ]
         },
         {
+            "tag": "Final",
+            "type": "selector",
+            "outbounds": [
+                "Connect",
+                "Direct"
+            ]
+        },
+        {
             "tag": "Manual-Selector",
             "type": "selector",
             "outbounds": [
@@ -547,7 +555,7 @@
     ],
     "route": {
         "auto_detect_interface": true,
-        "final": "Connect",
+        "final": "Final",
         "rules": [
             {
                 "type": "logical",
