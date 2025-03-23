@@ -19,11 +19,8 @@ table inet sing-box {
         meta l4proto tcp ip6 daddr fd00::/8 return
         ip6 daddr fd00::/8 udp dport != 53 return
         meta mark 0x000000ff return
+       
 
-        tcp dport 53 tproxy to :$adguard_port mark $tproxy_mark
-        udp dport 53 tproxy to :$adguard_port mark $tproxy_mark
-        # meta l4proto { tcp, udp } th dport 53 tproxy ip to :$adguard_port meta mark set $tproxy_mark
-        # meta l4proto { tcp, udp } th dport 53 tproxy ip6 to :$adguard_port meta mark set $tproxy_mark
         ## 以下两行端口需要跟sing-box 配置文件的tproxy端口一致
         meta l4proto tcp tproxy to :$tproxy_port meta mark set $tproxy_mark  accept
         meta l4proto udp tproxy to :$tproxy_port meta mark set $tproxy_mark  accept
@@ -41,9 +38,6 @@ table inet sing-box {
         ip daddr 192.168.1.0/24 udp dport != 53 return
         ip daddr 198.18.0.0/15 udp dport != 53 return
 
-        tcp dport 53 tproxy to :$adguard_port mark $tproxy_mark
-        udp dport 53 tproxy to :$adguard_port mark $tproxy_mark
-        # udp dport 53 meta mark set $tproxy_mark tproxy ip6 to :$adguard_port accept
 
         ## 以下三行是ipv6设置不需要可以删除
         ip6 daddr { ::1, fe80::/10 } return
