@@ -103,8 +103,8 @@
     "auto_detect_interface": true,
     "final": "Final",
     "rules": [
-      { "inbound": "tproxy-in", "action": "resolve", "strategy": "prefer_ipv4" },
       { "action": "sniff" },
+      { "inbound": "tproxy-in", "action": "resolve", "strategy": "prefer_ipv4" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "action": "route", "outbound": "Direct" },
       { "clash_mode": "全局", "action": "route", "outbound": "Connect" },

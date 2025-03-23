@@ -22,6 +22,7 @@ start_service() {
     procd_set_param stderr 1
     procd_set_param respawn "${respawn_threshold:-3600}" "${respawn_timeout:-5}" "${respawn_retry:-5}"
     procd_close_instance
+
     ## 以下七行是nftables相关，使用iptables自行替换##
     ip rule add fwmark $TPROXY_MARK table 100
     ip route add local 0.0.0.0/0 dev lo table 100
