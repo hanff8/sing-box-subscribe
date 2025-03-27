@@ -19,7 +19,10 @@ table inet sing-box {
         meta l4proto tcp ip6 daddr fd00::/8 return
         ip6 daddr fd00::/8 udp dport != 53 return
         meta mark 0x000000ff return
-       
+
+        ## 排除 sunshine 流量
+        udp dport {47984-47990} return
+        tcp dport {47984-47990} return
 
         ## 以下两行端口需要跟sing-box 配置文件的tproxy端口一致
         meta l4proto tcp tproxy to :$tproxy_port meta mark set $tproxy_mark  accept
@@ -44,6 +47,11 @@ table inet sing-box {
         meta l4proto tcp ip6 daddr fd00::/8 return
         ip6 daddr fd00::/8 udp dport != 53 return
         meta mark 0x000000ff return
+
+        ## 排除 sunshine 流量
+        udp dport {47984-47990} return
+        tcp dport {47984-47990} return
+
         meta l4proto { tcp, udp } meta mark set $tproxy_mark accept
     }
 
