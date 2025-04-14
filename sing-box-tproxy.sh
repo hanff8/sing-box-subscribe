@@ -66,9 +66,9 @@ start_service() {
         ip -6 rule del fwmark "$mark" table "$v6_table" 2>/dev/null || true
 
         # 添加新规则
-        ip rule add fwmark "$mark" table "$v4_table" prio 1000
+        ip rule add fwmark "$mark" table "$v4_table"
         ip route add local 0.0.0.0/0 dev lo table "$v4_table"
-        ip -6 rule add fwmark "$mark" table "$v6_table" prio 1000
+        ip -6 rule add fwmark "$mark" table "$v6_table"
         ip -6 route add local ::/0 dev lo table "$v6_table"
     done
     IFS="$old_ifs"

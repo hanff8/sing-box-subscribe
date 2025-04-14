@@ -13,15 +13,21 @@
   },
   "dns": {
     "servers": [
-      { "tag": "dns_proxy", "address": "https://dns.cloudflare.com/dns-query", "address_resolver": "defaultDNS", "address_strategy": "ipv4_only", "detour": "Connect" },
-      { "tag": "dns_direct", "address": "https://doh.pub/dns-query", "address_resolver": "defaultDNS", "address_strategy": "ipv4_only", "detour": "Direct" },
-      { "tag": "defaultDNS", "address": "119.29.29.29", "address_strategy": "ipv4_only", "detour": "Direct" },
+      { "tag": "dns_proxy", "address": "https://dns.cloudflare.com/dns-query", "address_resolver": "defaultDNS", "detour": "Connect" },
+      { "tag": "dns_direct", "address": "https://doh.pub/dns-query", "address_resolver": "defaultDNS", "detour": "Direct" },
+      { "tag": "defaultDNS", "address": "119.29.29.29", "detour": "Direct" },
       { "tag": "fake-ip", "address": "fakeip" }
     ],
     "rules": [
       { "outbound": "any", "action": "route", "server": "defaultDNS" },
-      { "query_type": ["A", "AAAA"], "server": "fake-ip", "action": "route" },
-      { "rule_set": ["geosite-geolocation-cn", "geosite-steam@cn", "geosite-cn"], "action": "route", "server": "dns_direct" },
+      { "rule_set": ["geosite-geolocation-cn", "geosite-steam@cn"], "action": "route", "server": "dns_direct" },
+      {
+        "type": "logical",
+        "mode": "and",
+        "rules": [{ "query_type": ["A", "AAAA"] }],
+        "action": "route",
+        "server": "fake-ip"
+      },
       { "clash_mode": "全局", "action": "route", "server": "dns_proxy" },
       { "clash_mode": "直连", "action": "route", "server": "dns_direct" }
     ],
@@ -116,9 +122,8 @@
         "outbound": "Direct"
       },
       { "domain_suffix": ["apm.yun.hihonor.com"], "action": "reject" },
-      { "domain_suffix": ["googleapis.cn", "googleapis.com", "xn--ngstr-lra8j.com"], "action": "route", "outbound": "Google" },
+      { "rule_set": ["geosite-youtube", "geoip-google", "geosite-google"], "domain_suffix": ["googleapis.cn", "googleapis.com", "xn--ngstr-lra8j.com"], "action": "route", "outbound": "Google" },
       { "rule_set": ["geosite-openai"], "action": "route", "outbound": "OpenAI" },
-      { "rule_set": ["geosite-youtube", "geoip-google", "geosite-google"], "action": "route", "outbound": "Google" },
       { "rule_set": ["geosite-steam@cn"], "action": "route", "outbound": "Direct" },
       { "domain_suffix": ["mypikpak.com", "mypikpak.net"], "action": "route", "outbound": "Pikpak" },
       { "rule_set": ["geosite-steam"], "action": "route", "outbound": "Steam" },
