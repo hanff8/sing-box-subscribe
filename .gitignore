@@ -11,7 +11,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-config*
+*config.json
+test_*.json
+
 
 .DS_Store
 

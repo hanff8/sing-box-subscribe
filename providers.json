@@ -13,7 +13,7 @@
     "proxy": "",
     "direct": ""
   },
-  "save_config_path": "config.json",
+  "save_config_path": "test_fakeip_1.12.json",
   "auto_backup": false,
   "exclude_protocol": "",
   "config_template": "",
