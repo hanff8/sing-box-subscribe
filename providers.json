@@ -2,6 +2,7 @@
   "subscribes": [
     {
       "url": "http://127.0.0.1:3000/download/collection/All?target=sing-box",
+
       "tag": "All",
       "enabled": true,
       "emoji": 1,
@@ -9,11 +10,7 @@
       "prefix": ""
     }
   ],
-  "auto_set_outbounds_dns": {
-    "proxy": "",
-    "direct": ""
-  },
-  "save_config_path": "test_fakeip_1.12.json",
+  "save_config_path": "config.json",
   "auto_backup": false,
   "exclude_protocol": "",
   "config_template": "",
